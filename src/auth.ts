@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import credentials from "next-auth/providers/credentials";
+import google from "next-auth/providers/google";
 import kakao from "next-auth/providers/kakao";
+import naver from "next-auth/providers/naver";
 
 interface UserInfo {
   displayName?: string;
@@ -27,6 +29,19 @@ export const {
     kakao({
       clientId: process.env.KAKAO_CLIENT_ID!,
       clientSecret: process.env.KAKAO_CLIENT_SECRET!,
+    }),
+    naver({
+      clientId: process.env.NAVER_CLIENT_ID!,
+      clientSecret: process.env.NAVER_CLIENT_SECRET!,
+    }),
+    google({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      authorization: {
+        params: {
+          prompt: "consent", // 사용자에게 항상 동의 화면을 표시하도록 강제!
+        },
+      },
     }),
     credentials({
       authorize: async (credentials) => {

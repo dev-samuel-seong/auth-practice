@@ -39,6 +39,9 @@ export default function SignInPage() {
           로그인
         </button>
       </form>
+      <button onClick={() => signIn("kakao")}>카카오</button>
+      <button onClick={() => signIn("naver")}>네이버</button>
+      <button onClick={() => signIn("google")}>구글</button>
     </>
   );
 }
