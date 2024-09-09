@@ -1,5 +1,5 @@
-import { getSession } from "@/serverActions/auth";
 import { updateUser } from "@/serverActions/user";
+import { getSession } from "next-auth/react";
 
 export default async function MyPage() {
   const session = await getSession();
